@@ -1,38 +1,43 @@
-import {AiFillFlag, BsSuitHeart, MdSecurity, RiAccountPinCircleLine, RiArrowDropDownLine} from "react-icons/all";
+'use client';
+import {Navbar} from "flowbite-react";
 
 export default function Top() {
     return (
-        <div className="bg-gray-200 border-y">
-            <div>
-                <div></div>
-                <ul>
-                    <li>
-                        <AiFillFlag />
-                        <span>Colombia/USD</span>
-                    </li>
-                    <li>
-                        <MdSecurity />
-                        <span>Buyer Security</span>
-                    </li>
-                    <li>
-                        <span>Customer Service</span>
-                    </li>
-                    <li>
-                        <span>Help</span>
-                    </li>
-                    <li>
-                        <BsSuitHeart />
-                        <span>Wishlist</span>
-                    </li>
-                    <li>
-                        <div className="flex">
-                            <RiAccountPinCircleLine />
-                            <span>Account</span>
-                            <RiArrowDropDownLine />
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <Navbar
+            fluid={true}
+            rounded={true}
+        >
+            <Navbar.Brand href="/">
+                <img
+                    src="logo.svg"
+                    className="mr-3 h-12 sm:h-9"
+                    alt="Flowbite Logo"
+                />
+                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+                    Store
+                </span>
+            </Navbar.Brand>
+            <Navbar.Toggle/>
+            <Navbar.Collapse>
+                <Navbar.Link
+                    href="/navbars"
+                    active={true}
+                >
+                    Home
+                </Navbar.Link>
+                <Navbar.Link href="/navbars">
+                    About
+                </Navbar.Link>
+                <Navbar.Link href="/navbars">
+                    Services
+                </Navbar.Link>
+                <Navbar.Link href="/navbars">
+                    Pricing
+                </Navbar.Link>
+                <Navbar.Link href="/navbars">
+                    Contact
+                </Navbar.Link>
+            </Navbar.Collapse>
+        </Navbar>
     );
 };
