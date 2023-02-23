@@ -1,24 +1,42 @@
 {
-  "name": "rs-store",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "13.1.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "18.14.0",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.34.0",
-    "eslint-config-next": "13.1.6",
-    "typescript": "4.9.5"
-  }
+    "name": "rs-store",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@next/font": "^13.1.6",
+        "@prisma/client": "^4.10.1",
+        "@react-native-async-storage/async-storage": "^1.17.11",
+        "@reduxjs/toolkit": "^1.9.3",
+        "daisyui": "^2.50.2",
+        "next": "13.1.6",
+        "next-redux-wrapper": "^8.1.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-icons": "^4.7.1",
+        "react-redux": "^8.0.5",
+        "redux": "^4.2.1",
+        "redux-devtools-extension": "^2.13.9",
+        "redux-persist": "^6.0.0",
+        "redux-thunk": "^2.4.2"
+    },
+    "devDependencies": {
+        "@types/node": "18.14.0",
+        "@types/react": "18.0.28",
+        "@types/react-dom": "18.0.11",
+        "autoprefixer": "^10.4.13",
+        "eslint": "8.34.0",
+        "eslint-config-next": "13.1.6",
+        "postcss": "^8.4.21",
+        "prettier": "2.8.4",
+        "prisma": "^4.10.1",
+        "tailwindcss": "^3.2.7",
+        "typescript": "4.9.5",
+        "webpack": "^5.75.0"
+    }
 }
