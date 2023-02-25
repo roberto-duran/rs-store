@@ -1,9 +1,24 @@
+import Link from "next/link";
+import Image from "next/image";
+import {authOptions} from "../../../types/AuthOptions";
+import {getServerSession} from "next-auth";
+import Logged from "./Logged";
+import Login from "./Login";
 
-export default function Header() {
+export default async function Header() {
+    const session = await getServerSession(authOptions);
+
     return (
         <div className="navbar bg-base-200">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                {/* @ts-ignore */}
+                <Link href={"/"}
+                      className="btn btn-ghost normal-case text-xl space-x-2">
+                    <Image src={'logo.svg'} alt={'logo'}
+                           width={20}
+                           height={20} />
+                    <span>Store</span>
+                </Link>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
@@ -23,23 +38,8 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
-                <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
+                {!session?.user && <Login />}
+                {session?.user && <Logged image={session.user?.image || ''} />}
             </div>
         </div>
     );

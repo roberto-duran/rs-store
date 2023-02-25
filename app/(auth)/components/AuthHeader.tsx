@@ -1,7 +1,8 @@
 export default function AuthHeader() {
     return (
-        <div>
-            <h1>AuthHeader</h1>
+        <div className="w-full h-[20vh] bg-gradient-to-r from-cyan-500 to-blue-500">
+            <div>
+            </div>
         </div>
     );
 };

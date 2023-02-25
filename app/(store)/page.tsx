@@ -1,9 +1,9 @@
+import Home from "../../components/home/Home";
 
-
-export default function Home() {
+export default function HomePage() {
     return (
-        <main className="text-3xl font-bold underline">
-            <h1>hello</h1>
+        <main className="container mx-auto h-[100vh] my-5">
+           <Home />
         </main>
     );
 }

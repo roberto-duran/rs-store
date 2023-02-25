@@ -13,8 +13,8 @@ export default function Footer({ userLocation }: FooterContainerProps) {
                 <div className="">
                     <Image src="./logo.svg"
                            alt="RS logo"
-                           width={40}
-                           height={40} />
+                           width={60}
+                           height={60} />
                 </div>
                 <div>
                     <span className="footer-title">Company</span>

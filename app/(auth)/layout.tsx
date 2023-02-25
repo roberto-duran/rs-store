@@ -3,7 +3,11 @@ import React from "react";
 // @ts-ignore
 import type { Metadata } from 'next';
 import {Poppins} from "next/font/google";
-import Footer from "../../components/layout/Footer";
+import { redirect } from 'next/navigation';
+import AuthHeader from "./components/AuthHeader";
+import AuthFooter from "./components/AuthFooter";
+import { getServerSession} from "next-auth";
+import {authOptions } from "../../types/AuthOptions";
 
 const poppins = Poppins({
     weight: ["400", "600", "700"],
@@ -51,11 +55,21 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({children}: { children: React.ReactNode; }) {
+    const session = await getServerSession(authOptions);
+    if (session) {
+        redirect('/');
+    }
     return (
         <html lang="en" className={poppins.className}>
         <body>
-            {children}
-            <Footer />
+            <AuthHeader />
+            <main className="mx-auto flex justify-center h-[82.7vh] -mt-20">
+                <div className="flex flex-col w-1/2 md:w-[500px] bg-white h-fit
+            shadow-amber-100 text-gray-800 p-6 rounded-md space-y-6">
+                    {children}
+                </div>
+            </main>
+            <AuthFooter />
         </body>
         </html>
     );
