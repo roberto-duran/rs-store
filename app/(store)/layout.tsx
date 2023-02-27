@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 const getApiRegistry = async () => {
     const url = `https://api.ipregistry.co/?key=${process.env.API_REGISTRY_KEY}`
     const apiRegistry = await fetch(url);
-    if(!apiRegistry.ok) throw new Error('Error Getting Data');
+    if(!apiRegistry.ok) throw new Error('GlobalError Getting Data');
     const result = await apiRegistry.json();
     const resultObject: UserLocation = {
         country: result.location.country.name,
@@ -76,6 +76,8 @@ export default async function RootLayout({children}: { children: React.ReactNode
     return (
         <html lang="en" className={poppins.className}>
             <body>
+                {/* TODO after the react/typescript team resolve this issue remove the line below */}
+                {/* @ts-expect-error Server Component */}
                 <Header />
                 {children}
                 <Footer userLocation={userLocation} />

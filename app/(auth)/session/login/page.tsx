@@ -33,13 +33,8 @@ export default function Login() {
                 </button>
             </div>
             {/* Separator */}
-            <div className="relative mt-10 h-px bg-gray-300">
-                <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
-                        <span className="bg-white px-4 text-xs text-gray-800 uppercase">
-                            Or Login With Email
-                        </span>
-                </div>
-            </div>
+
+            <div className="divider uppercase text-xs">Or Login With Email</div>
             {/* login form */}
             <form className="flex flex-col space-y-3">
                 <input type="email"

@@ -21,6 +21,13 @@ export default function Logged({image}: Props) {
                         <span className="badge">New</span>
                     </a>
                 </li>
+                <li>
+                    <div className="justify-between">
+                        <span className="label-text">Dark Mode</span>
+                        <input type="checkbox" className="toggle" checked />
+
+                    </div>
+                </li>
                 <li><a>Settings</a></li>
                 <li>
                     <a onClick={() => signOut()}>Logout</a>

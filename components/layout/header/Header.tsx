@@ -4,13 +4,14 @@ import {authOptions} from "../../../types/AuthOptions";
 import {getServerSession} from "next-auth";
 import Logged from "./Logged";
 import Login from "./Login";
+import {HiMagnifyingGlass} from "react-icons/hi2";
 
 export default async function Header() {
     const session = await getServerSession(authOptions);
 
     return (
-        <div className="navbar bg-base-200">
-            <div className="flex-1">
+        <div className="sticky top-0 z-50 navbar justify-between gap-4 md:gap-6 bg-base-200">
+            <div>
                 {/* @ts-ignore */}
                 <Link href={"/"}
                       className="btn btn-ghost normal-case text-xl space-x-2">
@@ -19,6 +20,25 @@ export default async function Header() {
                            height={20} />
                     <span>Store</span>
                 </Link>
+            </div>
+            <div className="">
+                <div className="form-control">
+                    <label className="input-group">
+                        <div className="input-group">
+                            <select className="select select-bordered hidden md:block">
+                                <option disabled selected>All</option>
+                                <option>T-shirts</option>
+                                <option>Mugs</option>
+                            </select>
+                            <input type="text"
+                                   placeholder="Busca el producto que necesitas..."
+                                   className="rounded-l-lg input input-bordered md:w-[40vw] lg:w-[60vw]" />
+                            <button className="btn">
+                                <HiMagnifyingGlass className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </label>
+                </div>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">

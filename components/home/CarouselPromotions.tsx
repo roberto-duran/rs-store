@@ -4,12 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 
 // Import Swiper styles
-import 'swiper/swiper-bundle.min.css';
-// import required modules
+import styles from './home.module.css'
 
 export default function CarouselPromotions() {
     return (
-        <div className="h-80 shadow">
+        <div className={`relative h-80 shadow  ${styles.carouselPromotionsContainer}`}>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
@@ -20,12 +19,12 @@ export default function CarouselPromotions() {
                 }}
                 navigation={true}
                 modules={[Pagination, Navigation]}
-                className="mySwiper"
+                className="carouselPromotions"
             >
                 {
                     [...Array(10).keys()].map((i) => (
-                        <SwiperSlide key={i}>
-                            <img src={`/images/swiper/${i}.jpg`} alt="" />
+                        <SwiperSlide key={i+1}>
+                            <img src={`/images/swiper/${i+1}.jpg`} alt="" />
                         </SwiperSlide>
                     ))
                 }
