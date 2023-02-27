@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         shadow: 'rgba(99,99,99,0.2) 0px 2px 8px 0px'
       },
+      fontFamily: ['--font-poppins', 'sans-serif'],
       gridTemplateColumns: {
         'store-home': '1fr 3fr 1fr',
       }

@@ -39,13 +39,14 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String          @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?         @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  ProductReview ProductReview[]
 }
 
 model VerificationToken {
@@ -60,15 +61,85 @@ model VerificationToken {
 
 // PRODUCTS START
 model Product {
-  id          String   @id @default(cuid())
-  slug        String   @unique
-  name        String
-  category    String
-  description String
-  price       Int
-  image       String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                   String              @id @default(cuid())
+  slug                 String              @unique
+  name                 String
+  description          String
+  image                String
+  isPublished          Boolean             @default(false)
+  videoURL             String?
+  brand                String?
+  shippingMethod       String?
+  publishedAt          DateTime
+  createdBy            String
+  refoundPolicy        String?
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+  ProductReview        ProductReview[]
+  ProductDetail        ProductDetail[]
+  ProductSubCategory   ProductSubCategory? @relation(fields: [productSubCategoryId], references: [id])
+  productSubCategoryId String?
+}
+
+model ProductDetail {
+  id           String         @id @default(cuid())
+  product_id   String
+  price        Float
+  color        String
+  size         String?
+  sku          String?
+  brand        String?
+  quantity     Int            @default(0)
+  unitSold     Int            @default(0)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  product      Product        @relation(fields: [product_id], references: [id])
+  ProductImage ProductImage[]
+}
+
+model ProductReview {
+  id         String   @id @default(cuid())
+  product_id String
+  user_id    String
+  rating     Int      @default(0)
+  comment    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  product    Product  @relation(fields: [product_id], references: [id])
+  user       User     @relation(fields: [user_id], references: [id])
+}
+
+model ProductImage {
+  id              String         @id @default(cuid())
+  productDetailId String?
+  image           String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  ProductDetail   ProductDetail? @relation(fields: [productDetailId], references: [id])
+}
+
+model ProductCategory {
+  id                 String               @id @default(cuid())
+  name               String
+  slug               String               @unique
+  description        String
+  image              String?
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  ProductSubCategory ProductSubCategory[]
+}
+
+model ProductSubCategory {
+  id              String          @id @default(cuid())
+  name            String
+  slug            String          @unique
+  description     String
+  image           String?
+  category_id     String
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  productCategory ProductCategory @relation(fields: [category_id], references: [id])
+  Product         Product[]
 }
 
 // PRODUCTS END

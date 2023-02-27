@@ -10,6 +10,7 @@ import {UserLocation} from "../../types/UserLocation";
 const poppins = Poppins({
     weight: ["400", "600", "700"],
     subsets: ["latin-ext"],
+    variable: '--font-poppins',
     display: "swap",
     preload: true,
 });
